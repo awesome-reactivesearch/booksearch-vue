@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ReactiveBase app="good-books-ds" credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d" >
+    <ReactiveBase app="good-books-yj" credentials="gBgUqs2tV:3456f3bf-ea9e-4ebc-9c93-08eb13e5c87c" >
       <button class="toggle" @click="switchContainer">
         {{ showBooks ? 'Show Filter 💣' : 'Show Books 📚' }}
       </button>
