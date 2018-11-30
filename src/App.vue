@@ -1,70 +1,77 @@
 <template>
   <div id="app">
-    <ReactiveBase app="good-books-yj" credentials="gBgUqs2tV:3456f3bf-ea9e-4ebc-9c93-08eb13e5c87c" >
-      <button class="toggle" @click="switchContainer">
-        {{ showBooks ? 'Show Filter 💣' : 'Show Books 📚' }}
-      </button>
-      <div class="filters-container" :class="{ hide: showBooks }">
-        <MultiList
-          componentId="Authors"
-          dataField="authors.raw"
-          class="filter"
-          title="Select Authors"
-          selectAllLabel="All Authors"
-        />
-        <SingleRange
-          componentId="Ratings"
-          dataField="average_rating"
-          :data="[
-            { 'start': 0, 'end': 3, 'label': 'Rating < 3' },
-            { 'start': 3, 'end': 4, 'label': 'Rating 3 to 4' },
-            { 'start': 4, 'end': 5, 'label': 'Rating > 4' }
-          ]"
-          title="Book Ratings"
-          class="filter"
+    <ReactiveBase
+      app="good-books-yj"
+      credentials="gBgUqs2tV:3456f3bf-ea9e-4ebc-9c93-08eb13e5c87c"
+    >
+      <div class="navbar">
+        <h2>📚Book<span>Search</span></h2>
+        <DataSearch
+          componentId="title"
+          iconPosition="right"
+          :dataField="['original_title', 'original_title.search']"
+          className="data-search"
+          placeholder="Search for book"
         />
       </div>
+      <button class="toggle" @click="switchContainer">
+        {{ showBooks ? "Show Filter 💣" : "Show Books 📚" }}
+      </button>
+      <div class="container">
+        <div class="filters-container" :class="{ full: !showBooks }">
+          <MultiList
+            componentId="Authors"
+            dataField="authors.raw"
+            class="filter"
+            title="Select Authors"
+            selectAllLabel="All Authors"
+            :react="{ and: ['Ratings', 'title'] }"
+          />
+          <SingleRange
+            componentId="Ratings"
+            dataField="average_rating"
+            :data="[
+              { start: 0, end: 3, label: 'Rating < 3' },
+              { start: 3, end: 4, label: 'Rating 3 to 4' },
+              { start: 4, end: 5, label: 'Rating > 4' }
+            ]"
+            title="Book Ratings"
+            class="filter"
+          />
+        </div>
 
-      <ReactiveList
-        componentId="SearchResult"
-        dataField="original_title.raw"
-        className="result-list-container"
-        :class="{ full: showBooks }"
-        :pagination="true"
-        :from="0"
-        :size="5"
-        :react="{and: ['Ratings','Authors']}"
-      >
-        <div slot="onData" slot-scope="{ item }">
-          <div class="flex book-content" key="item._id">
-            <img :src="item.image" alt="Book Cover" class="book-image" />
-            <div class="flex column justify-center ml20">
-              <div class="book-header">{{ item.original_title }}</div>
-                <div class="flex column justify-space-between">
-                    <div>
-                      <div>
-                        by <span class="authors-list">{{ item.authors }}</span>
-                      </div>
-                      <div class="ratings-list flex align-center">
-                        <span class="stars">
-                      <i v-for="(item, index) in Array(item.average_rating_rounded).fill('x')" class="fas fa-star" :key="index" />
-                    </span>
-                    <span class="avg-rating">({{item.average_rating}} avg)</span>
-                  </div>
+        <ReactiveList
+          componentId="SearchResult"
+          dataField="original_title.raw"
+          :class="{ full: showBooks }"
+          :pagination="true"
+          :from="0"
+          :size="16"
+          :showResultStats="false"
+          className="result-list-container"
+          :react="{ and: ['Ratings', 'Authors', 'title'] }"
+          :innerClass="{ list: 'books-container', poweredBy: 'appbase' }"
+        >
+          <div slot="onData" class="book-content" slot-scope="{ item }">
+            <div key="item._id">
+              <div class="image">
+                <img :src="item.image" alt="Book Cover" class="book-image" />
+                <div class="rating">{{ item.average_rating_rounded }} ⭐️</div>
+                <div class="details">
+                  <h4 class="book-header">{{ item.original_title }}</h4>
+                  <p>By {{ item.authors }}</p>
                 </div>
-                <span class="pub-year">Pub {{item.original_publication_year}}</span>
               </div>
             </div>
           </div>
-        </div>
-      </ReactiveList>
+        </ReactiveList>
+      </div>
     </ReactiveBase>
   </div>
 </template>
 
 <script>
 import "./styles.css";
-
 export default {
   name: "app",
   data: function() {
