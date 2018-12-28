@@ -4,61 +4,41 @@ body {
 }
 
 .navbar {
-  padding: 10px;
+  padding: 15px;
   background: #181c2b;
   display: flex;
-  flex-direction: row;
-  position: sticky;
+  z-index: 4;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .navbar h2 {
   margin: 0;
+  color: #eee;
+  width: 25%;
 }
 
-.navbar h2 span {
-  color: #eee;
+.navbar h2 .logo {
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  background: #3940ff;
+  box-shadow: -4px 4px #373cc3;
 }
 
 .data-search {
-  width: 40%;
+  width: 60%;
 }
 
 .data-search input {
   border: 0;
   border-radius: 2px;
-  background: rgba(0, 0, 0, 0.6);
-  color: rgba(255, 255, 255, 0.7);
-  transition: all ease 0.2s;
-}
-
-.data-search input:active {
-  background: #181c2b;
-  color: #eee;
-}
-
-.data-search input:focus {
-  background: rgba(0, 0, 0, 0.8) !important;
-  color: #eee;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
 .data-search ul {
-  background: #181c2b;
-  border: 0;
+  border: 1px solid #eee;
   border-radius: 2px;
-}
-
-.data-search ul li {
-  background-color: rgba(0, 0, 0, 0.4) !important;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all ease 0.1s;
-}
-
-.data-search ul li:hover {
-  color: #eee !important;
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .filters-container {
@@ -79,26 +59,19 @@ body {
   margin: 10px 0;
   box-shadow: 0 0 2px rgba(24, 28, 43, 0.2);
   color: #181c2b;
-  border: 1px solid transparent;
-  box-sizing: border-box;
-  transition: all ease 0.2s;
-}
-
-.filter:hover {
-  border: 1px groove #181c2b;
-  box-shadow: 0 1px 2px rgba(24, 28, 43, 0.4);
 }
 
 .result-list-container {
   overflow: hidden;
   width: 75%;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 
 .books-container {
   display: flex;
   padding: 10px;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -108,13 +81,8 @@ body {
   width: 200px;
   max-width: 250px;
   margin: 10px;
-  background: transparent;
   transition: all ease 0.1s;
   overflow: hidden;
-}
-
-.book-content:hover {
-  box-shadow: 1px 2px 2px 2px rgba(24, 28, 43, 0.2);
 }
 
 .image {
@@ -191,12 +159,19 @@ p {
     position: fixed;
     bottom: 0;
     font-size: 12px;
-    font-weight: 600;
     width: 100%;
     z-index: 2;
     display: inline;
     outline: none;
     cursor: pointer;
+  }
+
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .data-search {
+    width: 40%;
   }
 
   .filters-container {

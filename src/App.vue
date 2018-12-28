@@ -9,10 +9,20 @@
         <DataSearch
           componentId="title"
           iconPosition="right"
-          :dataField="['original_title', 'original_title.search']"
+          :dataField="[
+            'original_title',
+            'original_title.raw',
+            'original_title.search',
+            'authors',
+            'authors.raw',
+            'authors.search'
+          ]"
           className="data-search"
+          :showClear="false"
+          queryFormat="and"
+          :fieldWeights="[3, 3, 1, 2, 2, 1]"
           placeholder="Search for book"
-        />
+      />
       </div>
       <button class="toggle" @click="switchContainer">
         {{ showBooks ? "Show Filter 💣" : "Show Books 📚" }}
