@@ -1,20 +1,16 @@
 {
-  "name": "booksearch-vue",
-  "version": "0.1.0",
-  "private": true,
+  "name": "booksearch-app-final-styling",
+  "version": "1.0.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch-vue": "^1.0.0-beta.3",
-    "@babel/runtime": "^7.2.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
+    "@appbaseio/reactivesearch-vue": "1.16.0-alpha.35",
     "vue": "^2.5.17"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.2.0",
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-eslint": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
@@ -43,5 +39,7 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "keywords": [],
+  "description": ""
 }

@@ -1,10 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueRs from "@appbaseio/reactivesearch-vue";
+import ReactiveSearch from "@appbaseio/reactivesearch-vue";
 
-Vue.use(VueRs);
+Vue.use(ReactiveSearch);
 Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
