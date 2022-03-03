@@ -9,7 +9,7 @@
         <h2><span class="logo">Bs</span>BookSearch</h2>
         <SearchBox
           componentId="search-box"
-          iconPosition="right"
+          iconPosition="left"
           :dataField="[
             'original_title',
             'original_title.search',
@@ -28,14 +28,20 @@
             size: 3,
             minHits: 2,
             minChars: 4,
+            index: 'good-books-ds',
           }"
           :recentSuggestionsConfig="{
             size: 3,
             minChars: 4,
+            index: 'good-books-ds',
           }"
           index="good-books-ds"
           :size="10"
-        />
+        >
+          <div class="addon" slot="addonAfter">
+            <div class="focus-icon">/</div>
+          </div>
+        </SearchBox>
       </div>
       <button class="toggle" @click="switchContainer">
         {{ showBooks ? "Show Filters 💣" : "Show Books 📚" }}
