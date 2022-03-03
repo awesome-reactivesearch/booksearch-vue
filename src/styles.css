@@ -60,8 +60,13 @@ body {
   position: relative;
   top: -1px;
   width: 21px;
-  right: 3px;
+  right: -1px;
   font-size: 13px;
+}
+
+.cancel-icon {
+  position: relative;
+  right: -15px;
 }
 
 .filters-container {
