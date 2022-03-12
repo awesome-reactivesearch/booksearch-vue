@@ -2,7 +2,7 @@
   <div id="app">
     <ReactiveBase
       app="good-books-ds"
-      url="https://6a0ae3a3a8d4:6a3f508d-169b-4ed7-9680-20658120930f@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+      url="https://a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61@appbase-demo-ansible-abxiydt-arc.searchbase.io"
       :enableAppbase="true"
     >
       <div class="navbar">
@@ -19,7 +19,6 @@
             'authors',
           ]"
           className="search-box"
-          :showClear="true"
           placeholder="Search for books"
           :enableRecentSuggestions="true"
           :enablePopularSuggestions="true"
@@ -28,19 +27,15 @@
             size: 3,
             minHits: 2,
             minChars: 4,
-            index: 'good-books-ds',
           }"
           :recentSuggestionsConfig="{
             size: 3,
             minChars: 4,
-            index: 'good-books-ds',
           }"
           index="good-books-ds"
           :size="10"
         >
-          <div class="addon" slot="addonAfter">
-            <div class="focus-icon">/</div>
-          </div>
+          <div class="focus-shortcut" slot="addonAfter">/</div>
         </SearchBox>
       </div>
       <button class="toggle" @click="switchContainer">
@@ -73,7 +68,7 @@
           <SelectedFilters />
           <ReactiveList
             componentId="SearchResult"
-            data-field="original_title.raw"
+            data-field="original_title.keyword"
             :pagination="true"
             :from="0"
             :size="8"
